@@ -7,50 +7,94 @@
 
 <style>
     body {
-        font-family: Arial, sans-serif;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
         text-align: center;
-        margin-top: 100px;
-        background-color: #f5f5f5;
+        background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center center/cover;
+        color: white;
+    }
+
+    /* Fondo oscuro encima de la imagen */
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+        min-height: 100vh;
+        padding: 50px 20px;
+    }
+
+    h2 {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+
+    .contenedor {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
     }
 
     .card {
-        display: inline-block;
+        width: 220px;
         padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background-color: white;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+    }
+
+    .card h3 {
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 14px;
+        margin-bottom: 15px;
     }
 
     a {
-        display: inline-block;
-        margin-top: 10px;
         text-decoration: none;
-        color: black;
-        border: 1px solid black;
-        padding: 5px 10px;
-        border-radius: 5px;
+        color: white;
+        border: 1px solid white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        transition: 0.3s;
     }
 
     a:hover {
-        background-color: #ddd;
+        background-color: #2563eb;
+        border-color: #2563eb;
     }
 </style>
 </head>
 
 <body>
 
+<div class="overlay">
+
 <h2>Computación Gráfica</h2>
 
-<div class="card">
-    <h3>Círculo</h3>
-    <p>Dibujo de un círculo en canvas</p>
-    <a  href="circulo.html">Ver</a> 
-</div>
+<div class="contenedor">
 
     <div class="card">
-    <h3>Gráfico de Barras </h3>
-    <p>Gráfico de Barras Dinámico </p>
-    <a  href="Gráfico_de_Barras_Dinámico.html">Ver</a> 
+        <h3>Círculo</h3>
+        <p>Dibujo de un círculo en canvas</p>
+        <a href="circulo.html">Ver</a> 
+    </div>
+
+    <div class="card">
+        <h3>Gráfico de Barras</h3>
+        <p>Gráfico de Barras Dinámico</p>
+        <a href="grafico_barras_dinamico.html">Ver</a> 
+    </div>
+
+</div>
+
 </div>
 
 </body>
