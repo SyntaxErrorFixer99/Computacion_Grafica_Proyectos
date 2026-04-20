@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Función Coseno</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        color: white;
+    }
+
+    h2 {
+        margin-top: 30px;
+        font-size: 32px;
+    }
+
+    h1 {
+        font-size: 18px;
+        color: #cbd5f5;
+        margin-bottom: 20px;
+    }
+
+    .contenedor {
+        display: flex;
+        justify-content: center;
+    }
+
+    canvas {
+        border-radius: 15px;
+        background-color: #0b1120;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        border: none;
+    }
+</style>
+
+</head>
+
+<body>
+
+<h2>Curva Dinámica y = cos(x)</h2>
+<h1>Desarrollado por José Demetrio Chávez Vargas</h1>
+
+<div class="contenedor">
+    <canvas id="canvas" width="600" height="400"></canvas>
+</div>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let t = 0;
+
+function dibujar() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Ejes (más suaves)
+    ctx.strokeStyle = "#444";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, 200);
+    ctx.lineTo(600, 200);
+    ctx.moveTo(300, 0);
+    ctx.lineTo(300, 400);
+    ctx.stroke();
+
+    // Curva coseno (estilo neón)
+    ctx.beginPath();
+
+    for (let x = 0; x < 600; x++) {
+        let y = 100 * Math.cos((x * 0.02) + t);
+
+        if (x === 0) {
+            ctx.moveTo(x, 200 - y);
+        } else {
+            ctx.lineTo(x, 200 - y);
+        }
+    }
+
+    ctx.strokeStyle = "#38bdf8"; // azul claro moderno
+    ctx.lineWidth = 2;
+    ctx.shadowColor = "#38bdf8";
+    ctx.shadowBlur = 10;
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+
+    t += 0.1;
+}
+
+setInterval(dibujar, 50);
+</script>
+
+</body>
+</html>

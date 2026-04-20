@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Puntos en Movimiento</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        color: white;
+    }
+
+    h2 {
+        margin-top: 30px;
+        font-size: 32px;
+    }
+
+    h1 {
+        font-size: 18px;
+        color: #cbd5f5;
+        margin-bottom: 20px;
+    }
+
+    .contenedor {
+        display: flex;
+        justify-content: center;
+    }
+
+    canvas {
+        border-radius: 15px;
+        background-color: #0b1120;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+</style>
+
+</head>
+
+<body>
+
+<h2>Puntos en Movimiento</h2>
+<h1>Desarrollado por José Demetrio Chávez Vargas</h1>
+
+<div class="contenedor">
+    <canvas id="canvas" width="500" height="300"></canvas>
+</div>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let puntos = [];
+
+// Crear 5 puntos iniciales
+for (let i = 0; i < 5; i++) {
+  puntos.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height
+  });
+}
+
+function dibujar() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  puntos.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+
+    // efecto glow
+    ctx.fillStyle = "#38bdf8";
+    ctx.shadowColor = "#38bdf8";
+    ctx.shadowBlur = 10;
+
+    ctx.fill();
+  });
+
+  ctx.shadowBlur = 0;
+}
+
+function actualizar() {
+  puntos.forEach(p => {
+    p.x = Math.random() * canvas.width;
+    p.y = Math.random() * canvas.height;
+  });
+
+  dibujar();
+}
+
+setInterval(actualizar, 1000);
+dibujar();
+</script>
+
+</body>
+</html>
