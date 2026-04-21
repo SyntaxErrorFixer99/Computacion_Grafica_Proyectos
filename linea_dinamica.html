@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Línea Dinámica</title>
+
+<style>
+body {
+    background: #000;
+    color: white;
+    text-align: center;
+}
+
+canvas {
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+a {
+    margin-top: 20px;
+    display: inline-block;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📉 Línea Dinámica Arcoíris</h1>
+<h3>José Demetrio Chávez Vargas</h3>
+
+<canvas id="canvas" width="350" height="300"></canvas>
+
+<br>
+<a href="index.html">⬅ Volver</a>
+
+<script>
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+let puntos = [];
+
+function animar() {
+    ctx.fillStyle = "rgba(0,0,0,0.2)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    let y = 150 + Math.sin(Date.now()/300)*80;
+    puntos.push(y);
+
+    if(puntos.length > 350) puntos.shift();
+
+    for(let i=0; i<puntos.length; i++){
+        let hue = (i * 3) % 360;
+        ctx.fillStyle = "hsl(" + hue + ",100%,50%)";
+        ctx.fillRect(i, puntos[i], 2, 2);
+    }
+
+    requestAnimationFrame(animar);
+}
+
+animar();
+</script>
+
+</body>
+</html>
