@@ -2,188 +2,101 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Computación Gráfica</title>
+<title>Dibujo de un Círculo</title>
 
 <style>
     body {
         margin: 0;
         font-family: 'Segoe UI', sans-serif;
         text-align: center;
-        background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center center/cover;
+        background: linear-gradient(135deg, #0f172a, #1e3a8a);
         color: white;
     }
 
-    .overlay {
-        background-color: rgba(0, 0, 0, 0.7);
-        min-height: 100vh;
-        padding: 50px 20px;
-        animation: fadeIn 1s ease;
-    }
-
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
-
     h2 {
-        font-size: 40px;
-        margin-bottom: 10px;
+        margin-top: 30px;
+        font-size: 32px;
     }
 
     h1 {
-        font-size: 22px;
-        font-weight: normal;
-        margin-bottom: 40px;
-        color: #ccc;
+        font-size: 18px;
+        color: #cbd5f5;
+        margin-bottom: 30px;
     }
 
     .contenedor {
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
     }
 
-    .card {
-        width: 230px;
-        padding: 20px;
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    canvas {
+        background-color: #e5e7eb;
+        border: 5px solid black;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
 
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-    }
-
-    .card ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .card ul li {
-        margin: 5px 0;
-        font-size: 14px;
-        color: #e2e8f0;
-    }
-
-    a {
+    /* Botón volver */
+    .btn-volver {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         text-decoration: none;
         color: white;
         border: 1px solid white;
-        padding: 8px 15px;
-        border-radius: 20px;
+        padding: 10px 20px;
+        border-radius: 25px;
         transition: 0.3s;
-        display: inline-block;
-        margin-top: 10px;
-        cursor: pointer;
+        background-color: rgba(255,255,255,0.1);
     }
 
-    a:hover {
-        background-color: #2563eb;
-        border-color: #2563eb;
+    .btn-volver:hover {
+        background-color: #38bdf8;
+        border-color: #38bdf8;
     }
-
-    /* MODAL */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 10;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.8);
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        background: #0b1120;
-        padding: 30px;
-        border-radius: 15px;
-        width: 300px;
-        animation: scaleIn 0.3s ease;
-    }
-
-    @keyframes scaleIn {
-        from {transform: scale(0.7);}
-        to {transform: scale(1);}
-    }
-
-    .close {
-        float: right;
-        cursor: pointer;
-        font-size: 20px;
-        color: white;
-    }
-
 </style>
+
 </head>
 
 <body>
 
-<div class="overlay">
-
-<h2>Computación Gráfica</h2>
-<h1>José Demetrio Chávez Vargas</h1>
+<h2>Dibujo de un Círculo</h2>
+<h1>Desarrollado por José Demetrio Chávez Vargas</h1>
 
 <div class="contenedor">
-
-    <!-- INFO -->
-    <div class="card">
-        <h3>Ejercicios en Clase</h3>
-        <p>Estos son los ejercicios que el profesor dejó en clase para reforzar los conocimientos de computación gráfica.</p>
-    </div>
-
-    <!-- ACTIVIDAD 4 -->
-    <div class="card">
-        <h3>Tarea Actividad N° 4</h3>
-        <p>Incluye los siguientes ejercicios:</p>
-        <ul>
-        <li>📶 Gráfico de Barras Dinámico</li>
-        <li>⚪ Puntos en Movimiento</li>
-        <li>📉 Curva de la Función Coseno</li>
-        </ul>
-        <a onclick="abrirModal()">Ver</a>
-    </div>
-
+    <canvas id="canvas" width="600" height="400"></canvas>
 </div>
 
-</div>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="cerrarModal()">✖</span>
-        <h3>Actividad N° 4</h3>
-
-        <a href="grafico_barras_dinamico.html">📶 Barras</a><br><br>
-        <a href="grafico_puntos_movimiento.html">⚪  Puntos</a><br><br>
-        <a href="curva_funcion_coseno.html">📉 Coseno</a>
-    </div>
-</div>
+<a href="javascript:history.back()" class="btn-volver">⬅ Volver</a>
 
 <script>
-function abrirModal() {
-    document.getElementById("modal").style.display = "flex";
-}
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-function cerrarModal() {
-    document.getElementById("modal").style.display = "none";
-}
+let radio = 0; // empieza en 0
 
-// cerrar al hacer click fuera
-window.onclick = function(event) {
-    let modal = document.getElementById("modal");
-    if (event.target == modal) {
-        modal.style.display = "none";
+function animar() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.beginPath();
+    ctx.arc(300, 200, radio, 0, Math.PI * 2);
+    ctx.fillStyle = "#94a3b8";
+    ctx.fill();
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#1e293b";
+    ctx.stroke();
+
+    // aumentar tamaño poco a poco
+    if (radio < 100) {
+        radio += 2; // velocidad de crecimiento
+        requestAnimationFrame(animar);
     }
 }
+
+// iniciar animación
+animar();
 </script>
 
 </body>
