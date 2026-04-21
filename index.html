@@ -15,7 +15,7 @@
     }
 
     .overlay {
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.75);
         min-height: 100vh;
         padding: 50px 20px;
         animation: fadeIn 1s ease;
@@ -27,13 +27,12 @@
     }
 
     h2 {
-        font-size: 40px;
-        margin-bottom: 10px;
+        font-size: 42px;
+        margin-bottom: 5px;
     }
 
     h1 {
-        font-size: 22px;
-        font-weight: normal;
+        font-size: 20px;
         margin-bottom: 40px;
         color: #ccc;
     }
@@ -42,44 +41,48 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 25px;
     }
 
     .card {
-        width: 270px;
-        padding: 20px;
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 280px;
+        padding: 25px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        transition: 0.3s;
     }
 
     .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+
+    .card h3 {
+        margin-bottom: 10px;
     }
 
     .card ul {
         list-style: none;
         padding: 0;
+        text-align: left;
     }
 
     .card ul li {
         margin: 8px 0;
         font-size: 15px;
-        color: #e2e8f0;
     }
 
     a {
         text-decoration: none;
         color: white;
         border: 1px solid white;
-        padding: 8px 15px;
-        border-radius: 20px;
+        padding: 8px 18px;
+        border-radius: 25px;
         transition: 0.3s;
         display: inline-block;
-        margin-top: 10px;
+        margin-top: 12px;
         cursor: pointer;
     }
 
@@ -88,20 +91,22 @@
         border-color: #2563eb;
     }
 
+    /* CÍRCULO */
     .mini-circulo {
-        width: 50px;
-        height: 50px;
-        background: #38bdf8;
+        width: 55px;
+        height: 55px;
+        background: radial-gradient(circle, #60a5fa, #2563eb);
         border-radius: 50%;
         margin: 15px auto;
-        box-shadow: 0 0 20px #38bdf8;
+        box-shadow: 0 0 20px #3b82f6;
         animation: aparecer 1s ease;
         cursor: pointer;
-        transition: transform 0.3s ease;
+        transition: 0.3s;
     }
 
     .mini-circulo:hover {
         transform: scale(1.2);
+        box-shadow: 0 0 30px #60a5fa;
     }
 
     @keyframes aparecer {
@@ -109,15 +114,14 @@
         to { transform: scale(1); opacity: 1; }
     }
 
+    /* MODAL */
     .modal {
         display: none;
         position: fixed;
         z-index: 10;
-        left: 0;
-        top: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.8);
+        background: rgba(0,0,0,0.85);
         justify-content: center;
         align-items: center;
     }
@@ -128,7 +132,6 @@
         border-radius: 15px;
         width: 320px;
         animation: scaleIn 0.3s ease;
-        text-align: center;
     }
 
     @keyframes scaleIn {
@@ -140,8 +143,8 @@
         float: right;
         cursor: pointer;
         font-size: 20px;
-        color: white;
     }
+
 </style>
 </head>
 
@@ -149,44 +152,44 @@
 
 <div class="overlay">
 
-<h2>Computación Gráfica</h2>
+<h2>💻 Computación Gráfica</h2>
 <h1>José Demetrio Chávez Vargas</h1>
 
 <div class="contenedor">
 
-<!-- TRABAJOS NUEVOS -->
+<!-- TRABAJOS -->
 <div class="card">
-    <h3>Trabajos Nuevos</h3>
+    <h3>🚀 Trabajos en Clase</h3>
 
     <div class="mini-circulo" onclick="window.location.href='circulo.html'"></div>
 
     <p>
-        Aquí se encuentran los nuevos trabajos desarrollados durante el curso,
-        aplicando conceptos más avanzados de computación gráfica.
+        Ejercicios desarrollados como retos prácticos para dominar gráficos computacionales.
     </p>
 
     <ul>
-        <li>🟣 Círculo</li>
-        <li>🟦 Cuadrado y Triángulo</li>
+        <li>🟣 Dibujo de Círculo</li>
+        <li>🟦 Cuadrado & 🔺 Triángulo</li>
         <li>📊 Gráfico de Barras</li>
-        <li>📈 Función Matemática</li>
+        <li>🌈 Función Matemática</li>
         <li>📉 Línea Dinámica</li>
     </ul>
 
-    <a onclick="abrirModalTrabajos()">Ver</a>
+    <a onclick="abrirModalTrabajos()">Ver trabajos</a>
 </div>
 
 <!-- ACTIVIDAD -->
 <div class="card">
-    <h3>Tarea Actividad N° 4</h3>
-    <p>Incluye los siguientes ejercicios:</p>
+    <h3>📚 Actividad N° 4</h3>
+    <p>Ejercicios evaluados:</p>
+
     <ul>
-        <li>📊 Gráfico de Barras Dinámico</li>
+        <li>📊 Barras Dinámicas</li>
         <li>✨ Puntos en Movimiento</li>
-        <li>📈 Curva de la Función Coseno</li>
+        <li>📈 Función Coseno</li>
     </ul>
 
-    <a onclick="abrirModal()">Ver ejercicios</a>
+    <a onclick="abrirModal()">Ver actividad</a>
 </div>
 
 </div>
@@ -197,14 +200,13 @@
 <div id="modalTrabajos" class="modal">
     <div class="modal-content">
         <span class="close" onclick="cerrarModalTrabajos()">✖</span>
-        <h3>Trabajos Nuevos</h3>
+        <h3>🚀 Trabajos</h3>
 
-        <a href="circulo.html">🟣 Ejercicio 1 - Círculo</a><br><br>
+        <a href="circulo.html">🟣 Círculo</a><br><br>
         <a href="cuadrado_triangulo.html">🟦 Cuadrado y Triángulo</a><br><br>
-        <a href="grafico_barras.html">📊 Gráfico de Barras</a><br><br>
-        <a href="funcion_matematica.html">📈 Función Matemática</a><br><br>
-        <a href="linea_dinamica.html">📉 Línea Dinámica</a><br><br>
-       
+        <a href="grafico_barras.html">📊 Barras</a><br><br>
+        <a href="funcion_matematica.html">🌈 Función</a><br><br>
+        <a href="linea_dinamica.html">📉 Línea</a>
     </div>
 </div>
 
@@ -212,9 +214,9 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="cerrarModal()">✖</span>
-        <h3>Tarea Actividad N° 4</h3>
+        <h3>📚 Actividad N° 4</h3>
 
-        <a href="grafico_barras_dinamico.html">📶 Barras</a><br><br>
+        <a href="grafico_barras_dinamico.html">📊 Barras</a><br><br>
         <a href="grafico_puntos_movimiento.html">✨ Puntos</a><br><br>
         <a href="curva_funcion_coseno.html">📈 Coseno</a>
     </div>
@@ -238,16 +240,11 @@ function cerrarModalTrabajos() {
 }
 
 window.onclick = function(event) {
-    let modal1 = document.getElementById("modal");
-    let modal2 = document.getElementById("modalTrabajos");
+    let m1 = document.getElementById("modal");
+    let m2 = document.getElementById("modalTrabajos");
 
-    if (event.target == modal1) {
-        modal1.style.display = "none";
-    }
-
-    if (event.target == modal2) {
-        modal2.style.display = "none";
-    }
+    if (event.target == m1) m1.style.display = "none";
+    if (event.target == m2) m2.style.display = "none";
 }
 </script>
 
