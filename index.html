@@ -6,141 +6,145 @@
 <title>Computación Gráfica</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
-    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center center/cover;
-    color: white;
-}
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center center/cover;
+        color: white;
+    }
 
-.overlay {
-    background-color: rgba(0, 0, 0, 0.75);
-    min-height: 100vh;
-    padding: 50px 20px;
-    animation: fadeIn 1s ease;
-}
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.75);
+        min-height: 100vh;
+        padding: 50px 20px;
+        animation: fadeIn 1s ease;
+    }
 
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
 
-h2 {
-    font-size: 42px;
-    margin-bottom: 5px;
-}
+    h2 {
+        font-size: 42px;
+        margin-bottom: 5px;
+    }
 
-h1 {
-    font-size: 20px;
-    margin-bottom: 40px;
-    color: #ccc;
-}
+    h1 {
+        font-size: 20px;
+        margin-bottom: 40px;
+        color: #ccc;
+    }
 
-.contenedor {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-}
+    .contenedor {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
 
-.card {
-    width: 280px;
-    padding: 25px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-    transition: 0.3s;
-}
+    .card {
+        width: 280px;
+        padding: 25px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        transition: 0.3s;
+    }
 
-.card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-}
+    .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
 
-.card ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-}
+    .card h3 {
+        margin-bottom: 10px;
+    }
 
-.card ul li {
-    margin: 8px 0;
-    font-size: 15px;
-}
+    .card ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
 
-/* BOTONES */
-button {
-    color: white;
-    border: 1px solid white;
-    padding: 8px 18px;
-    border-radius: 25px;
-    background: transparent;
-    cursor: pointer;
-    margin-top: 12px;
-}
+    .card ul li {
+        margin: 8px 0;
+        font-size: 15px;
+    }
 
-button:hover {
-    background-color: #2563eb;
-    border-color: #2563eb;
-}
+    a {
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 8px 18px;
+        border-radius: 25px;
+        transition: 0.3s;
+        display: inline-block;
+        margin-top: 12px;
+        cursor: pointer;
+    }
 
-/* CÍRCULO */
-.mini-circulo {
-    width: 55px;
-    height: 55px;
-    background: radial-gradient(circle, #60a5fa, #2563eb);
-    border-radius: 50%;
-    margin: 15px auto;
-    box-shadow: 0 0 20px #3b82f6;
-    animation: aparecer 1s ease;
-    cursor: pointer;
-    transition: 0.3s;
-}
+    a:hover {
+        background-color: #2563eb;
+        border-color: #2563eb;
+    }
 
-.mini-circulo:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 30px #60a5fa;
-}
+    /* CÍRCULO */
+    .mini-circulo {
+        width: 55px;
+        height: 55px;
+        background: radial-gradient(circle, #60a5fa, #2563eb);
+        border-radius: 50%;
+        margin: 15px auto;
+        box-shadow: 0 0 20px #3b82f6;
+        animation: aparecer 1s ease;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-@keyframes aparecer {
-    from { transform: scale(0); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
+    .mini-circulo:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 30px #60a5fa;
+    }
 
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
-}
+    @keyframes aparecer {
+        from { transform: scale(0); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
 
-.modal-content {
-    background: #0b1120;
-    padding: 30px;
-    border-radius: 15px;
-    width: 320px;
-    animation: scaleIn 0.3s ease;
-}
+    /* MODAL */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.85);
+        justify-content: center;
+        align-items: center;
+    }
 
-@keyframes scaleIn {
-    from {transform: scale(0.7);}
-    to {transform: scale(1);}
-}
+    .modal-content {
+        background: #0b1120;
+        padding: 30px;
+        border-radius: 15px;
+        width: 320px;
+        animation: scaleIn 0.3s ease;
+    }
 
-.close {
-    float: right;
-    cursor: pointer;
-    font-size: 20px;
-}
+    @keyframes scaleIn {
+        from {transform: scale(0.7);}
+        to {transform: scale(1);}
+    }
+
+    .close {
+        float: right;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
 </style>
 </head>
 
@@ -171,12 +175,13 @@ button:hover {
         <li>📉 Línea Dinámica</li>
     </ul>
 
-    <button onclick="abrirModalTrabajos()">Ver trabajos</button>
+    <a onclick="abrirModalTrabajos()">Ver trabajos</a>
 </div>
 
 <!-- ACTIVIDAD -->
 <div class="card">
     <h3>📚 Actividad N° 4</h3>
+    <p>Ejercicios evaluados:</p>
 
     <ul>
         <li>📊 Barras Dinámicas</li>
@@ -184,7 +189,7 @@ button:hover {
         <li>📈 Función Coseno</li>
     </ul>
 
-    <button onclick="abrirModal()">Ver actividad</button>
+    <a onclick="abrirModal()">Ver actividad</a>
 </div>
 
 </div>
