@@ -48,6 +48,26 @@
     transition: height 0.5s ease;
     box-shadow: 0 0 10px #38bdf8;
   }
+
+  /* Botón volver */
+  .btn-volver {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: 0.3s;
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  .btn-volver:hover {
+    background-color: #38bdf8;
+    border-color: #38bdf8;
+  }
 </style>
 
 </head>
@@ -60,6 +80,9 @@
 <div class="contenedor-principal">
   <div class="contenedor" id="grafico"></div>
 </div>
+
+<!-- Botón volver -->
+<a href="index.html" class="btn-volver">⬅ Volver al inicio</a>
 
 <script>
 const contenedor = document.getElementById("grafico");
