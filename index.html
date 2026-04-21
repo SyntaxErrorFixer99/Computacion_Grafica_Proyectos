@@ -157,25 +157,44 @@
 
 <div class="contenedor">
 
-<!-- EJERCICIOS EN CLASE -->
-<!-- EJERCICIOS EN CLASE -->
+<!-- TRABAJOS NUEVOS -->
 <div class="card">
-    <h3>Ejercicios en Clase</h3>
+    <h3>Trabajos Nuevos</h3>
 
-    <!-- CÍRCULO FUNCIONAL -->
+    <!-- CÍRCULO TAMBIÉN AQUÍ -->
     <div class="mini-circulo" onclick="window.location.href='circulo.html'"></div>
 
     <p>
-        Estos ejercicios fueron planteados por el profesor como un reto en clase, 
-        con el objetivo de fortalecer la comprensión práctica de la computación gráfica.
+        Aquí se encuentran los nuevos trabajos desarrollados durante el curso,
+        aplicando conceptos más avanzados de computación gráfica.
     </p>
 
     <ul>
         <li>🟣 Círculo</li>
+        <li>🟦 Cuadrado y Triángulo</li>
+        <li>📊 Gráfico de Barras</li>
+        <li>📈 Función Matemática</li>
+        <li>📉 Línea Dinámica</li>
     </ul>
 
-    <a href="circulo.html">🟣 Ver ejercicio del Círculo</a>
+    <a onclick="abrirModalTrabajos()">Ver</a>
 </div>
+
+<!-- MODAL TRABAJOS -->
+<div id="modalTrabajos" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalTrabajos()">✖</span>
+        <h3>Trabajos Nuevos</h3>
+
+        <a href="circulo.html">🟣 Ejercicio 1 - Círculo</a><br><br>
+        <a href="cuadrado_triangulo.html">🟦 Cuadrado y Triángulo</a><br><br>
+        <a href="grafico_barras.html">📊 Gráfico de Barras</a><br><br>
+        <a href="funcion_matematica.html">📈 Función Matemática</a><br><br>
+        <a href="linea_dinamica.html">📉 Línea Dinámica</a><br><br>
+        <a href="barras_dinamicas.html">📶 Barras Dinámicas</a>
+    </div>
+</div>
+    
 <!-- ACTIVIDAD -->
 <div class="card">
     <h3>Tarea Actividad N° 4</h3>
