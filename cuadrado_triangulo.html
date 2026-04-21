@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuadrado y Triángulo</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: white;
+}
+
+/* CONTENEDOR */
+.container {
+    padding: 20px;
+}
+
+/* TITULOS */
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-weight: normal;
+    color: #cbd5f5;
+}
+
+/* AREA DE DIBUJO */
+.canvas-box {
+    margin: 30px auto;
+    border: 3px solid white;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 95%;
+    background: #e5e7eb;
+}
+
+/* BOTON VOLVER */
+.btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    h2 {
+        font-size: 22px;
+    }
+
+    .canvas-box {
+        width: 95%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Cuadrado y Triángulo</h2>
+<h3>José Demetrio Chávez Vargas</h3>
+
+<div class="canvas-box">
+    <canvas id="canvas"></canvas>
+</div>
+
+<a href="index.html" class="btn">⬅ Volver</a>
+
+</div>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+/* AJUSTE RESPONSIVE */
+function ajustarCanvas() {
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = 300;
+    dibujar();
+}
+
+window.addEventListener("resize", ajustarCanvas);
+ajustarCanvas();
+
+/* DIBUJO */
+function dibujar() {
+
+    // limpiar
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    /* CUADRADO */
+    ctx.fillStyle = "blue";
+    ctx.fillRect(canvas.width * 0.15, 80, 100, 100);
+
+    /* TRIÁNGULO */
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.6, 80);
+    ctx.lineTo(canvas.width * 0.5, 180);
+    ctx.lineTo(canvas.width * 0.7, 180);
+    ctx.closePath();
+
+    ctx.fillStyle = "green";
+    ctx.fill();
+
+    /* SOMBRA SUAVE */
+    ctx.shadowColor = "rgba(0,0,0,0.3)";
+    ctx.shadowBlur = 10;
+}
+</script>
+
+</body>
+</html>
