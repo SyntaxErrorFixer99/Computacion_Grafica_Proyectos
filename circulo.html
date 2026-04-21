@@ -2,29 +2,87 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Círculo en HTML</title>
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+<title>Dibujo de un Círculo</title>
 
-  .circulo {
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(45deg, red, orange);
-    border-radius: 50%;
-  }
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        color: white;
+    }
+
+    h2 {
+        margin-top: 30px;
+        font-size: 32px;
+    }
+
+    h1 {
+        font-size: 18px;
+        color: #cbd5f5;
+        margin-bottom: 30px;
+    }
+
+    .contenedor {
+        display: flex;
+        justify-content: center;
+    }
+
+    canvas {
+        background-color: #e5e7eb;
+        border: 5px solid black;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    /* Botón volver */
+    .btn-volver {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: 0.3s;
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    .btn-volver:hover {
+        background-color: #38bdf8;
+        border-color: #38bdf8;
+    }
 </style>
+
 </head>
+
 <body>
 
-<div class="circulo"></div>
+<h2>Dibujo de un Círculo</h2>
+<h1>Desarrollado por José Demetrio Chávez Vargas</h1>
+
+<div class="contenedor">
+    <canvas id="canvas" width="600" height="400"></canvas>
+</div>
+
+<a href="javascript:history.back()" class="btn-volver">⬅ Volver</a>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+// Dibujar círculo
+ctx.beginPath();
+ctx.arc(300, 200, 100, 0, Math.PI * 2);
+ctx.fillStyle = "#94a3b8"; // color suave moderno
+ctx.fill();
+ctx.lineWidth = 2;
+ctx.strokeStyle = "#1e293b";
+ctx.stroke();
+</script>
 
 </body>
 </html>
-
-
-
