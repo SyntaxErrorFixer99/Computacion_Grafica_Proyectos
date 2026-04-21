@@ -88,27 +88,26 @@
         border-color: #2563eb;
     }
 
-    /* CÍRCULO CON ANIMACIÓN PRO */
+    /* CÍRCULO INTERACTIVO */
     .mini-circulo {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
         background: #38bdf8;
         border-radius: 50%;
-        margin: 10px auto;
-        box-shadow: 0 0 15px #38bdf8;
-        animation: aparecer 1s ease, latido 1.5s infinite;
+        margin: 15px auto;
+        box-shadow: 0 0 20px #38bdf8;
+        animation: aparecer 1s ease;
         cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .mini-circulo:hover {
+        transform: scale(1.2);
     }
 
     @keyframes aparecer {
         from { transform: scale(0); opacity: 0; }
         to { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes latido {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
     }
 
     /* MODAL */
@@ -161,12 +160,12 @@
     <div class="card">
         <h3>Ejercicios en Clase</h3>
 
-        <!-- CÍRCULO CLICKEABLE -->
-        <div class="mini-circulo" onclick="abrirModal()"></div>
+        <!-- CÍRCULO AHORA FUNCIONAL -->
+        <div class="mini-circulo" onclick="window.location.href='circulo.html'"></div>
 
         <p>
-            Estos ejercicios fueron planteados por el profesor como un reto en clase,
-            con el objetivo de fortalecer la comprensión práctica de los conceptos
+            Estos ejercicios fueron planteados por el profesor como un reto en clase, 
+            con el objetivo de fortalecer la comprensión práctica de los conceptos 
             fundamentales de la computación gráfica.
         </p>
     </div>
