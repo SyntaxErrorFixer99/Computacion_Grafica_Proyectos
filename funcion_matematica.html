@@ -3,66 +3,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Función Matemática</title>
+<title>Computación Gráfica</title>
 
 <style>
 body {
-    background: black;
-    color: white;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
     text-align: center;
+    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center center/cover;
+    color: white;
 }
 
-canvas {
-    background: #111;
-    margin-top: 20px;
-    border-radius: 10px;
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    min-height: 100vh;
+    padding: 50px 20px;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    width: 270px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card ul li {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #e2e8f0;
 }
 
 a {
-    margin-top: 20px;
-    display: inline-block;
+    text-decoration: none;
     color: white;
     border: 1px solid white;
     padding: 8px 15px;
     border-radius: 20px;
-    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+a:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+/* CÍRCULO */
+.mini-circulo {
+    width: 50px;
+    height: 50px;
+    background: #38bdf8;
+    border-radius: 50%;
+    margin: 15px auto;
+    box-shadow: 0 0 20px #38bdf8;
+    animation: aparecer 1s ease;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.mini-circulo:hover {
+    transform: scale(1.2);
+}
+
+@keyframes aparecer {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #0b1120;
+    padding: 30px;
+    border-radius: 15px;
+    width: 320px;
+    animation: scaleIn 0.3s ease;
+    text-align: center;
+}
+
+@keyframes scaleIn {
+    from {transform: scale(0.7);}
+    to {transform: scale(1);}
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
 }
 </style>
 </head>
 
 <body>
 
-<h1>📈 Función Seno Arcoíris</h1>
-<h3>José Demetrio Chávez Vargas</h3>
+<div class="overlay">
 
-<canvas id="canvas" width="350" height="300"></canvas>
+<h2>Computación Gráfica</h2>
+<h1>José Demetrio Chávez Vargas</h1>
 
-<br>
-<a href="index.html">⬅ Volver</a>
+<div class="contenedor">
+
+<!-- TRABAJOS EN CLASE -->
+<div class="card">
+    <h3>Trabajos en Clase</h3>
+
+    <div class="mini-circulo" onclick="window.location.href='circulo.html'"></div>
+
+    <p>
+        Trabajos desarrollados como reto en clase para reforzar habilidades prácticas en computación gráfica.
+    </p>
+
+    <ul>
+        <li>🟣 Círculo Interactivo</li>
+        <li>🔷 Cuadrado y Triángulo</li>
+        <li>📊 Gráfico de Barras</li>
+        <li>📌 Plano Cartesiano (y = x²)</li>
+        <li>🌈 Línea Dinámica</li>
+    </ul>
+
+    <a onclick="abrirModalTrabajos()">Ver</a>
+</div>
+
+<!-- ACTIVIDAD -->
+<div class="card">
+    <h3>Tarea Actividad N° 4</h3>
+    <p>Incluye los siguientes ejercicios:</p>
+
+    <ul>
+        <li>📊 Barras Dinámicas</li>
+        <li>✨ Puntos en Movimiento</li>
+        <li>📈 Curva del Coseno</li>
+    </ul>
+
+    <a onclick="abrirModal()">Ver ejercicios</a>
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL TRABAJOS -->
+<div id="modalTrabajos" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalTrabajos()">✖</span>
+        <h3>Trabajos en Clase</h3>
+
+        <a href="circulo.html">🟣 Círculo</a><br><br>
+        <a href="cuadrado_triangulo.html">🔷 Cuadrado y Triángulo</a><br><br>
+        <a href="grafico_barras.html">📊 Gráfico de Barras</a><br><br>
+        <a href="funcion_matematica.html">📌 Plano Cartesiano (y = x²)<br><small>José Demetrio Chávez Vargas</small></a><br><br>
+        <a href="linea_dinamica.html">🌈 Línea Dinámica</a>
+    </div>
+</div>
+
+<!-- MODAL ACTIVIDAD -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">✖</span>
+        <h3>Actividad N° 4</h3>
+
+        <a href="grafico_barras_dinamico.html">📊 Barras</a><br><br>
+        <a href="grafico_puntos_movimiento.html">✨ Puntos</a><br><br>
+        <a href="curva_funcion_coseno.html">📈 Coseno</a>
+    </div>
+</div>
 
 <script>
-let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
-
-let t = 0;
-
-function dibujar() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    for(let x=0; x<350; x++){
-        let y = 150 + Math.sin((x+t)*0.05)*80;
-
-        let hue = (x + t) % 360;
-        ctx.fillStyle = "hsl(" + hue + ",100%,50%)";
-
-        ctx.fillRect(x, y, 2, 2);
-    }
-
-    t += 2;
-    requestAnimationFrame(dibujar);
+function abrirModal() {
+    document.getElementById("modal").style.display = "flex";
 }
 
-dibujar();
+function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+function abrirModalTrabajos() {
+    document.getElementById("modalTrabajos").style.display = "flex";
+}
+
+function cerrarModalTrabajos() {
+    document.getElementById("modalTrabajos").style.display = "none";
+}
+
+window.onclick = function(event) {
+    let modal1 = document.getElementById("modal");
+    let modal2 = document.getElementById("modalTrabajos");
+
+    if (event.target == modal1) modal1.style.display = "none";
+    if (event.target == modal2) modal2.style.display = "none";
+}
 </script>
 
 </body>
