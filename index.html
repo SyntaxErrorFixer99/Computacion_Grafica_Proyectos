@@ -18,6 +18,12 @@
         background-color: rgba(0, 0, 0, 0.7);
         min-height: 100vh;
         padding: 50px 20px;
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
     }
 
     h2 {
@@ -54,19 +60,9 @@
         box-shadow: 0 15px 30px rgba(0,0,0,0.7);
     }
 
-    .card h3 {
-        margin-bottom: 10px;
-    }
-
-    .card p {
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-
     .card ul {
         list-style: none;
         padding: 0;
-        margin: 10px 0;
     }
 
     .card ul li {
@@ -83,13 +79,49 @@
         border-radius: 20px;
         transition: 0.3s;
         display: inline-block;
-        margin-top: 5px;
+        margin-top: 10px;
+        cursor: pointer;
     }
 
     a:hover {
         background-color: #2563eb;
         border-color: #2563eb;
     }
+
+    /* MODAL */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: #0b1120;
+        padding: 30px;
+        border-radius: 15px;
+        width: 300px;
+        animation: scaleIn 0.3s ease;
+    }
+
+    @keyframes scaleIn {
+        from {transform: scale(0.7);}
+        to {transform: scale(1);}
+    }
+
+    .close {
+        float: right;
+        cursor: pointer;
+        font-size: 20px;
+        color: white;
+    }
+
 </style>
 </head>
 
@@ -102,13 +134,13 @@
 
 <div class="contenedor">
 
-    <!-- NUEVO -->
+    <!-- INFO -->
     <div class="card">
         <h3>Ejercicios en Clase</h3>
         <p>Estos son los ejercicios que el profesor dejó en clase para reforzar los conocimientos de computación gráfica.</p>
     </div>
 
-    <!-- NUEVO -->
+    <!-- ACTIVIDAD 4 -->
     <div class="card">
         <h3>Actividad N° 4</h3>
         <p>Incluye los siguientes ejercicios:</p>
@@ -117,30 +149,61 @@
             <li>🔵 Puntos en Movimiento</li>
             <li>📈 Curva de la Función Coseno</li>
         </ul>
+        <a onclick="abrirModal()">Ver</a>
     </div>
 
-    <!-- TUS EJERCICIOS -->
+    <!-- EJERCICIOS -->
     <div class="card">
         <h3>Ejercicio 1</h3>
         <p>Gráfico de Barras Dinámico</p>
-        <a href="grafico_barras_dinamico.html">Ver</a> 
+        <a href="grafico_barras_dinamico.html">Ver</a>
     </div>
 
     <div class="card">
         <h3>Ejercicio 2</h3>
         <p>Gráfico de Puntos en Movimiento</p>
-        <a href="grafico_puntos_movimiento.html">Ver</a> 
+        <a href="grafico_puntos_movimiento.html">Ver</a>
     </div>
 
     <div class="card">
         <h3>Ejercicio 3</h3>
         <p>Curva Dinámica de la Función Coseno</p>
-        <a href="curva_funcion_coseno.html">Ver</a> 
+        <a href="curva_funcion_coseno.html">Ver</a>
     </div>
 
 </div>
 
 </div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">✖</span>
+        <h3>Actividad N° 4</h3>
+
+        <a href="grafico_barras_dinamico.html">📊 Barras</a><br><br>
+        <a href="grafico_puntos_movimiento.html">🔵 Puntos</a><br><br>
+        <a href="curva_funcion_coseno.html">📈 Coseno</a>
+    </div>
+</div>
+
+<script>
+function abrirModal() {
+    document.getElementById("modal").style.display = "flex";
+}
+
+function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+// cerrar al hacer click fuera
+window.onclick = function(event) {
+    let modal = document.getElementById("modal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
 </body>
 </html>
