@@ -33,7 +33,26 @@
         border-radius: 15px;
         background-color: #0b1120;
         box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        border: none;
+    }
+
+    /* Botón volver */
+    .btn-volver {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: 0.3s;
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    .btn-volver:hover {
+        background-color: #38bdf8;
+        border-color: #38bdf8;
     }
 </style>
 
@@ -48,6 +67,9 @@
     <canvas id="canvas" width="600" height="400"></canvas>
 </div>
 
+<!-- Botón volver -->
+<a href="index.html" class="btn-volver">⬅ Volver al inicio</a>
+
 <script>
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -58,7 +80,7 @@ function dibujar() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Ejes (más suaves)
+    // Ejes
     ctx.strokeStyle = "#444";
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -68,7 +90,7 @@ function dibujar() {
     ctx.lineTo(300, 400);
     ctx.stroke();
 
-    // Curva coseno (estilo neón)
+    // Curva coseno
     ctx.beginPath();
 
     for (let x = 0; x < 600; x++) {
@@ -81,7 +103,7 @@ function dibujar() {
         }
     }
 
-    ctx.strokeStyle = "#38bdf8"; // azul claro moderno
+    ctx.strokeStyle = "#38bdf8";
     ctx.lineWidth = 2;
     ctx.shadowColor = "#38bdf8";
     ctx.shadowBlur = 10;
