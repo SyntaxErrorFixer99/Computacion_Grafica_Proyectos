@@ -1,281 +1,274 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computación Gráfica | Dashboard</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #38bdf8;
-            --accent: #2563eb;
-            --bg-card: rgba(255, 255, 255, 0.07);
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computación Gráfica</title>
 
-        body {
-            margin: 0;
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-            background: radial-gradient(circle at top, #1e293b, #0f172a);
-            background-attachment: fixed;
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+<!-- ICONOS (tipo Flaticon) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        .overlay {
-            width: 100%;
-            max-width: 1000px;
-            padding: 40px 20px;
-            text-align: center;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center center/cover;
+    color: white;
+}
 
-        header {
-            margin-bottom: 50px;
-            animation: slideDown 0.8s ease-out;
-        }
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    min-height: 100vh;
+    padding: 50px 20px;
+    animation: fadeIn 1s ease;
+}
 
-        h2 {
-            font-size: 3rem;
-            margin: 0;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-        }
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 
-        h1 {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-top: 10px;
-        }
+h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
 
-        .contenedor {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            perspective: 1000px;
-        }
+h1 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 40px;
+    color: #ccc;
+}
 
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 30px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
+.contenedor {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-        .card:hover {
-            transform: translateY(-10px) rotateX(2deg);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
+.card {
+    width: 270px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .card i.main-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: block;
-        }
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+}
 
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
+.card h3 i {
+    margin-right: 8px;
+    color: #60a5fa;
+}
 
-        .card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
+.card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
 
-        .card ul {
-            text-align: left;
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
+.card ul li {
+    margin: 10px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-        .card ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.card ul li i {
+    color: #38bdf8;
+}
 
-        .card ul li i {
-            color: var(--primary);
-            font-size: 0.8rem;
-        }
+/* BOTÓN */
+button {
+    color: white;
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
 
-        .btn-action {
-            width: 100%;
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            display: block;
-            margin-top: 15px;
-        }
+button:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
 
-        .btn-action:hover {
-            background: var(--primary);
-            color: #0f172a;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-        }
+/* CÍRCULO */
+.mini-circulo {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #38bdf8, #2563eb);
+    border-radius: 50%;
+    margin: 15px auto;
+    box-shadow: 0 0 20px #38bdf8;
+    animation: aparecer 1s ease;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
-        /* Modales */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(8px);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+.mini-circulo:hover {
+    transform: scale(1.2);
+}
 
-        .modal-content {
-            background: #1e293b;
-            width: 100%;
-            max-width: 400px;
-            padding: 40px;
-            border-radius: 28px;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-            text-align: left;
-        }
+@keyframes aparecer {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 
-        .modal-content a {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.03);
-            margin-bottom: 10px;
-            transition: 0.2s;
-        }
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
 
-        .modal-content a:hover {
-            background: rgba(56, 189, 248, 0.1);
-            transform: translateX(5px);
-            color: var(--primary);
-        }
+.modal-content {
+    background: #0b1120;
+    padding: 30px;
+    border-radius: 15px;
+    width: 320px;
+    animation: scaleIn 0.3s ease;
+    text-align: center;
+}
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: var(--text-dim);
-        }
+.modal-content a {
+    display: block;
+    margin: 10px 0;
+    color: white;
+    text-decoration: none;
+}
 
-        @keyframes slideDown {
-            from { transform: translateY(-30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-    </style>
+.modal-content a:hover {
+    color: #60a5fa;
+}
+
+@keyframes scaleIn {
+    from {transform: scale(0.7);}
+    to {transform: scale(1);}
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+</style>
 </head>
 
 <body>
 
 <div class="overlay">
-    <header>
-        <h2>Computación Gráfica</h2>
-        <h1>José Demetrio Chávez Vargas</h1>
-    </header>
 
-    <div class="contenedor">
-        <div class="card">
-            <i class="fa-solid fa-laptop-code main-icon"></i>
-            <h3>Trabajos en Clase</h3>
-            <p>Implementación de algoritmos fundamentales y estructuras geométricas avanzadas.</p>
-            <ul>
-                <li><i class="fa-solid fa-circle"></i> Círculo</li>
-                <li><i class="fa-solid fa-shapes"></i> Cuadrado y Triángulo</li>
-                <li><i class="fa-solid fa-chart-simple"></i> Gráfico de Barras</li>
-                <li><i class="fa-solid fa-arrow-trend-up"></i> Función Matemática</li>
-            </ul>
-            <button class="btn-action" onclick="abrirModal('modalTrabajos')">
-                <i class="fa-solid fa-eye"></i> Explorar Proyectos
-            </button>
-        </div>
+<h2><i class="fas fa-laptop-code"></i> Computación Gráfica</h2>
+<h1>José Demetrio Chávez Vargas</h1>
 
-        <div class="card">
-            <i class="fa-solid fa-layer-group main-icon"></i>
-            <h3>Actividad N° 4</h3>
-            <p>Ejercicios enfocados en dinamismo, curvas trigonométricas y renderizado de puntos.</p>
-            <ul>
-                <li><i class="fa-solid fa-chart-column"></i> Barras Dinámicas</li>
-                <li><i class="fa-solid fa-ellipsis"></i> Puntos en Movimiento</li>
-                <li><i class="fa-solid fa-wave-square"></i> Función Coseno</li>
-            </ul>
-            <button class="btn-action" onclick="abrirModal('modalActividad')">
-                <i class="fa-solid fa-list-check"></i> Ver Tareas
-            </button>
-        </div>
-    </div>
+<div class="contenedor">
+
+<!-- TRABAJOS -->
+<div class="card">
+    <h3><i class="fas fa-rocket"></i> Trabajos en Clase</h3>
+
+    <div class="mini-circulo" onclick="window.location.href='circulo.html'"></div>
+
+    <p>
+        Ejercicios desarrollados como retos prácticos para dominar gráficos computacionales.
+    </p>
+
+    <ul>
+        <li><i class="fas fa-circle"></i> Círculo</li>
+        <li><i class="fas fa-shapes"></i> Cuadrado y Triángulo</li>
+        <li><i class="fas fa-chart-bar"></i> Gráfico de Barras</li>
+        <li><i class="fas fa-wave-square"></i> Función Matemática</li>
+        <li><i class="fas fa-chart-line"></i> Línea Dinámica</li>
+    </ul>
+
+    <button onclick="abrirModalTrabajos()">Ver</button>
 </div>
 
+<!-- ACTIVIDAD -->
+<div class="card">
+    <h3><i class="fas fa-book"></i> Actividad N° 4</h3>
+
+    <ul>
+        <li><i class="fas fa-chart-column"></i> Barras Dinámicas</li>
+        <li><i class="fas fa-braille"></i> Puntos en Movimiento</li>
+        <li><i class="fas fa-wave-square"></i> Función Coseno</li>
+    </ul>
+
+    <button onclick="abrirModal()">Ver</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL TRABAJOS -->
 <div id="modalTrabajos" class="modal">
     <div class="modal-content">
-        <i class="fa-solid fa-xmark close-btn" onclick="cerrarModal('modalTrabajos')"></i>
-        <h3 style="margin-top:0"><i class="fa-solid fa-folder-open"></i> Laboratorios</h3>
-        <a href="circulo.html"><i class="fa-solid fa-circle"></i> Ejercicio 1 - Círculo</a>
-        <a href="cuadrado_triangulo.html"><i class="fa-solid fa-shapes"></i> Cuadrado y Triángulo</a>
-        <a href="grafico_barras.html"><i class="fa-solid fa-chart-bar"></i> Gráfico de Barras</a>
-        <a href="funcion_matematica.html"><i class="fa-solid fa-calculator"></i> Función Matemática</a>
-        <a href="linea_dinamica.html"><i class="fa-solid fa-lines-leaning"></i> Línea Dinámica</a>
+        <span class="close" onclick="cerrarModalTrabajos()">✖</span>
+        <h3>Trabajos</h3>
+
+        <a href="circulo.html"><i class="fas fa-circle"></i> Círculo</a>
+        <a href="cuadrado_triangulo.html"><i class="fas fa-shapes"></i> Cuadrado y Triángulo</a>
+        <a href="grafico_barras.html"><i class="fas fa-chart-bar"></i> Barras</a>
+        <a href="funcion_matematica.html"><i class="fas fa-wave-square"></i> Función</a>
+        <a href="linea_dinamica.html"><i class="fas fa-chart-line"></i> Línea</a>
     </div>
 </div>
 
-<div id="modalActividad" class="modal">
+<!-- MODAL ACTIVIDAD -->
+<div id="modal" class="modal">
     <div class="modal-content">
-        <i class="fa-solid fa-xmark close-btn" onclick="cerrarModal('modalActividad')"></i>
-        <h3 style="margin-top:0"><i class="fa-solid fa-terminal"></i> Actividad 4</h3>
-        <a href="grafico_barras_dinamico.html"><i class="fa-solid fa-chart-column"></i> Barras Dinámicas</a>
-        <a href="grafico_puntos_movimiento.html"><i class="fa-solid fa-braille"></i> Sistema de Puntos</a>
-        <a href="curva_funcion_coseno.html"><i class="fa-solid fa-wave-square"></i> Curva Coseno</a>
+        <span class="close" onclick="cerrarModal()">✖</span>
+        <h3>Actividad N° 4</h3>
+
+        <a href="grafico_barras_dinamico.html"><i class="fas fa-chart-column"></i> Barras</a>
+        <a href="grafico_puntos_movimiento.html"><i class="fas fa-braille"></i> Puntos</a>
+        <a href="curva_funcion_coseno.html"><i class="fas fa-wave-square"></i> Coseno</a>
     </div>
 </div>
 
 <script>
-    function abrirModal(id) {
-        document.getElementById(id).style.display = "flex";
-    }
+function abrirModal() {
+    document.getElementById("modal").style.display = "flex";
+}
 
-    function cerrarModal(id) {
-        document.getElementById(id).style.display = "none";
-    }
+function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+}
 
-    // Cerrar al hacer clic fuera del modal
-    window.onclick = function(event) {
-        if (event.target.className === 'modal') {
-            event.target.style.display = "none";
-        }
-    }
+function abrirModalTrabajos() {
+    document.getElementById("modalTrabajos").style.display = "flex";
+}
+
+function cerrarModalTrabajos() {
+    document.getElementById("modalTrabajos").style.display = "none";
+}
+
+window.onclick = function(event) {
+    let modal1 = document.getElementById("modal");
+    let modal2 = document.getElementById("modalTrabajos");
+
+    if (event.target == modal1) modal1.style.display = "none";
+    if (event.target == modal2) modal2.style.display = "none";
+}
 </script>
 
 </body>
