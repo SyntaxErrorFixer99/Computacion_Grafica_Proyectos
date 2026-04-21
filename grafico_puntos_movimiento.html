@@ -34,6 +34,26 @@
         background-color: #0b1120;
         box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
+
+    /* Botón volver */
+    .btn-volver {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: 0.3s;
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    .btn-volver:hover {
+        background-color: #38bdf8;
+        border-color: #38bdf8;
+    }
 </style>
 
 </head>
@@ -46,6 +66,9 @@
 <div class="contenedor">
     <canvas id="canvas" width="500" height="300"></canvas>
 </div>
+
+<!-- Botón volver -->
+<a href="index.html" class="btn-volver">⬅ Volver al inicio</a>
 
 <script>
 const canvas = document.getElementById("canvas");
