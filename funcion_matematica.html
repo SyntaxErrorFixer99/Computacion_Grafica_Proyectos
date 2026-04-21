@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Función Matemática</title>
+
+<style>
+body {
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+canvas {
+    background: #111;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+a {
+    margin-top: 20px;
+    display: inline-block;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📈 Función Seno Arcoíris</h1>
+<h3>José Demetrio Chávez Vargas</h3>
+
+<canvas id="canvas" width="350" height="300"></canvas>
+
+<br>
+<a href="index.html">⬅ Volver</a>
+
+<script>
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+let t = 0;
+
+function dibujar() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    for(let x=0; x<350; x++){
+        let y = 150 + Math.sin((x+t)*0.05)*80;
+
+        let hue = (x + t) % 360;
+        ctx.fillStyle = "hsl(" + hue + ",100%,50%)";
+
+        ctx.fillRect(x, y, 2, 2);
+    }
+
+    t += 2;
+    requestAnimationFrame(dibujar);
+}
+
+dibujar();
+</script>
+
+</body>
+</html>
