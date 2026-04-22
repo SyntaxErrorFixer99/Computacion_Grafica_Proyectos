@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* ====== ESTILOS GENERALES ====== */
         body {
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
@@ -30,19 +29,9 @@
             to { opacity: 1; }
         }
 
-        h2 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
+        h2 { font-size: 40px; margin-bottom: 10px; }
+        h1 { font-size: 22px; font-weight: normal; margin-bottom: 40px; color: #ccc; }
 
-        h1 {
-            font-size: 22px;
-            font-weight: normal;
-            margin-bottom: 40px;
-            color: #ccc;
-        }
-
-        /* ====== CONTENEDOR ====== */
         .contenedor {
             display: flex;
             justify-content: center;
@@ -50,7 +39,6 @@
             gap: 20px;
         }
 
-        /* ====== TARJETAS ====== */
         .card {
             width: 270px;
             padding: 20px;
@@ -66,10 +54,7 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.7);
         }
 
-        .card h3 i {
-            margin-right: 8px;
-            color: #60a5fa;
-        }
+        .card h3 i { margin-right: 8px; color: #60a5fa; }
 
         .card ul {
             list-style: none;
@@ -85,11 +70,8 @@
             gap: 8px;
         }
 
-        .card ul li i {
-            color: #38bdf8;
-        }
+        .card ul li i { color: #38bdf8; }
 
-        /* ====== BOTÓN ====== */
         button {
             color: white;
             border: 1px solid white;
@@ -106,7 +88,6 @@
             border-color: #2563eb;
         }
 
-        /* ====== CÍRCULO ====== */
         .mini-circulo {
             width: 50px;
             height: 50px;
@@ -119,22 +100,13 @@
             transition: transform 0.3s ease;
         }
 
-        .mini-circulo:hover {
-            transform: scale(1.2);
-        }
+        .mini-circulo:hover { transform: scale(1.2); }
 
         @keyframes aparecer {
-            from {
-                transform: scale(0);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
-        /* ====== MODAL ====== */
         .modal {
             display: none;
             position: fixed;
@@ -166,9 +138,7 @@
             text-decoration: none;
         }
 
-        .modal-content a:hover {
-            color: #60a5fa;
-        }
+        .modal-content a:hover { color: #60a5fa; }
 
         .close {
             float: right;
@@ -185,101 +155,123 @@
 
 <body>
 
-    <div class="overlay">
-        <h2><i class="fas fa-laptop-code"></i> Computación Gráfica</h2>
-        <h1>José Demetrio Chávez Vargas</h1>
+<div class="overlay">
+    <h2><i class="fas fa-laptop-code"></i> Computación Gráfica</h2>
+    <h1>José Demetrio Chávez Vargas</h1>
 
-        <div class="contenedor">
+    <div class="contenedor">
 
-            <!-- ====== TRABAJOS ====== -->
-            <div class="card">
-                <h3><i class="fas fa-rocket"></i> Trabajos en Clase</h3>
+        <!-- TRABAJOS -->
+        <div class="card">
+            <h3><i class="fas fa-rocket"></i> Trabajos en Clase</h3>
+            <div class="mini-circulo" onclick="window.location.href='circulo.html'"></div>
 
-                <div class="mini-circulo" onclick="window.location.href='circulo.html'"></div>
+            <p>Ejercicios desarrollados como retos prácticos.</p>
 
-                <p>
-                    Ejercicios desarrollados como retos prácticos para dominar gráficos computacionales.
-                </p>
+            <ul>
+                <li><i class="fas fa-circle"></i> Círculo</li>
+                <li><i class="fas fa-shapes"></i> Cuadrado y Triángulo</li>
+                <li><i class="fas fa-chart-bar"></i> Barras</li>
+                <li><i class="fas fa-wave-square"></i> Función</li>
+                <li><i class="fas fa-chart-line"></i> Línea</li>
+            </ul>
 
-                <ul>
-                    <li><i class="fas fa-circle"></i> Círculo</li>
-                    <li><i class="fas fa-shapes"></i> Cuadrado y Triángulo</li>
-                    <li><i class="fas fa-chart-bar"></i> Gráfico de Barras</li>
-                    <li><i class="fas fa-wave-square"></i> Función Matemática</li>
-                    <li><i class="fas fa-chart-line"></i> Línea Dinámica</li>
-                </ul>
-
-                <button onclick="abrirModalTrabajos()">Ver</button>
-            </div>
-
-            <!-- ====== ACTIVIDAD ====== -->
-            <div class="card">
-                <h3><i class="fas fa-book"></i> Tarea Actividad N° 4</h3>
-
-                <ul>
-                    <li><i class="fas fa-chart-column"></i> Barras Dinámicas</li>
-                    <li><i class="fas fa-braille"></i> Puntos en Movimiento</li>
-                    <li><i class="fas fa-wave-square"></i> Función Coseno</li>
-                </ul>
-
-                <button onclick="abrirModal()">Ver</button>
-            </div>
-
+            <button onclick="abrirModalTrabajos()">Ver</button>
         </div>
-    </div>
 
-    <!-- ====== MODAL TRABAJOS ====== -->
-    <div id="modalTrabajos" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModalTrabajos()">✖</span>
-            <h3>Trabajos</h3>
+        <!-- ACTIVIDAD 4 -->
+        <div class="card">
+            <h3><i class="fas fa-book"></i> Tarea Actividad N° 4</h3>
 
-            <a href="circulo.html"><i class="fas fa-circle"></i> Círculo</a>
-            <a href="cuadrado_triangulo.html"><i class="fas fa-shapes"></i> Cuadrado y Triángulo</a>
-            <a href="grafico_barras.html"><i class="fas fa-chart-bar"></i> Barras</a>
-            <a href="funcion_matematica.html"><i class="fas fa-wave-square"></i> Función</a>
-            <a href="linea_dinamica.html"><i class="fas fa-chart-line"></i> Línea</a>
+            <ul>
+                <li><i class="fas fa-chart-column"></i> Barras</li>
+                <li><i class="fas fa-braille"></i> Puntos</li>
+                <li><i class="fas fa-wave-square"></i> Coseno</li>
+            </ul>
+
+            <button onclick="abrirModal()">Ver</button>
         </div>
-    </div>
 
-    <!-- ====== MODAL ACTIVIDAD ====== -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModal()">✖</span>
-            <h3>Tarea Actividad N° 4</h3>
-
-            <a href="grafico_barras_dinamico.html"><i class="fas fa-chart-column"></i> Barras</a>
-            <a href="grafico_puntos_movimiento.html"><i class="fas fa-braille"></i> Puntos</a>
-            <a href="curva_funcion_coseno.html"><i class="fas fa-wave-square"></i> Coseno</a>
+        <!-- ACTIVIDAD 5 (CORREGIDO + NUEVO ICONO 3D) -->
+        <div class="card">
+            <h3><i class="fas fa-cube"></i> Tarea Actividad N° 5 EJERCICIOS 3D</h3>
+            <button onclick="abrirModal5()">Ver</button>
         </div>
+
     </div>
+</div>
 
-    <!-- ====== SCRIPT ====== -->
-    <script>
-        function abrirModal() {
-            document.getElementById("modal").style.display = "flex";
-        }
+<!-- MODAL TRABAJOS -->
+<div id="modalTrabajos" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalTrabajos()">✖</span>
+        <h3>Trabajos</h3>
 
-        function cerrarModal() {
-            document.getElementById("modal").style.display = "none";
-        }
+        <a href="circulo.html"><i class="fas fa-circle"></i> Círculo</a>
+        <a href="cuadrado_triangulo.html"><i class="fas fa-shapes"></i> Cuadrado</a>
+        <a href="grafico_barras.html"><i class="fas fa-chart-bar"></i> Barras</a>
+        <a href="funcion_matematica.html"><i class="fas fa-wave-square"></i> Función</a>
+        <a href="linea_dinamica.html"><i class="fas fa-chart-line"></i> Línea</a>
+    </div>
+</div>
 
-        function abrirModalTrabajos() {
-            document.getElementById("modalTrabajos").style.display = "flex";
-        }
+<!-- MODAL ACTIVIDAD 4 -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">✖</span>
+        <h3>Tarea Actividad N° 4</h3>
 
-        function cerrarModalTrabajos() {
-            document.getElementById("modalTrabajos").style.display = "none";
-        }
+        <a href="grafico_barras_dinamico.html"><i class="fas fa-chart-column"></i> Barras</a>
+        <a href="grafico_puntos_movimiento.html"><i class="fas fa-braille"></i> Puntos</a>
+        <a href="curva_funcion_coseno.html"><i class="fas fa-wave-square"></i> Coseno</a>
+    </div>
+</div>
 
-        window.onclick = function(event) {
-            let modal1 = document.getElementById("modal");
-            let modal2 = document.getElementById("modalTrabajos");
+<!-- MODAL ACTIVIDAD 5 -->
+<div id="modal5" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal5()">✖</span>
+        <h3>Tarea Actividad N° 5</h3>
 
-            if (event.target == modal1) modal1.style.display = "none";
-            if (event.target == modal2) modal2.style.display = "none";
-        }
-    </script>
+        <a href="rotacion3d.html"><i class="fas fa-cube"></i> Rotación 3D</a>
+    </div>
+</div>
+
+<script>
+    function abrirModal() {
+        document.getElementById("modal").style.display = "flex";
+    }
+
+    function cerrarModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+
+    function abrirModal5() {
+        document.getElementById("modal5").style.display = "flex";
+    }
+
+    function cerrarModal5() {
+        document.getElementById("modal5").style.display = "none";
+    }
+
+    function abrirModalTrabajos() {
+        document.getElementById("modalTrabajos").style.display = "flex";
+    }
+
+    function cerrarModalTrabajos() {
+        document.getElementById("modalTrabajos").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        let m1 = document.getElementById("modal");
+        let m2 = document.getElementById("modalTrabajos");
+        let m3 = document.getElementById("modal5");
+
+        if (event.target == m1) m1.style.display = "none";
+        if (event.target == m2) m2.style.display = "none";
+        if (event.target == m3) m3.style.display = "none";
+    }
+</script>
 
 </body>
 </html>
