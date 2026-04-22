@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Computación Gráfica</title>
 
-<!-- ICONOS (tipo Flaticon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -29,17 +28,8 @@ body {
     to {opacity: 1;}
 }
 
-h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
-
-h1 {
-    font-size: 22px;
-    font-weight: normal;
-    margin-bottom: 40px;
-    color: #ccc;
-}
+h2 { font-size: 40px; }
+h1 { font-size: 22px; color: #ccc; margin-bottom: 40px; }
 
 .contenedor {
     display: flex;
@@ -55,7 +45,7 @@ h1 {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: 0.3s;
 }
 
 .card:hover {
@@ -63,10 +53,7 @@ h1 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.7);
 }
 
-.card h3 i {
-    margin-right: 8px;
-    color: #60a5fa;
-}
+.card h3 i { margin-right: 8px; color: #60a5fa; }
 
 .card ul {
     list-style: none;
@@ -76,17 +63,10 @@ h1 {
 
 .card ul li {
     margin: 10px 0;
-    font-size: 15px;
     display: flex;
-    align-items: center;
     gap: 8px;
 }
 
-.card ul li i {
-    color: #38bdf8;
-}
-
-/* BOTÓN */
 button {
     color: white;
     border: 1px solid white;
@@ -95,12 +75,10 @@ button {
     background: transparent;
     cursor: pointer;
     margin-top: 10px;
-    transition: 0.3s;
 }
 
 button:hover {
     background-color: #2563eb;
-    border-color: #2563eb;
 }
 
 /* CÍRCULO */
@@ -111,18 +89,7 @@ button:hover {
     border-radius: 50%;
     margin: 15px auto;
     box-shadow: 0 0 20px #38bdf8;
-    animation: aparecer 1s ease;
     cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.mini-circulo:hover {
-    transform: scale(1.2);
-}
-
-@keyframes aparecer {
-    from { transform: scale(0); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
 }
 
 /* MODAL */
@@ -130,8 +97,6 @@ button:hover {
     display: none;
     position: fixed;
     z-index: 999;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.8);
@@ -140,14 +105,11 @@ button:hover {
 }
 
 .modal-content {
-    background: rgba(15, 23, 42, 0.95); /* Azul oscuro más elegante y menos agresivo */
-    color: #f1f5f9; /* Letras más claras */
+    background: rgba(15, 23, 42, 0.95);
     padding: 30px;
     border-radius: 15px;
     width: 340px;
-    animation: scaleIn 0.3s ease;
     text-align: center;
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); /* Brillo azul moderno */
 }
 
 .modal-content a {
@@ -161,15 +123,9 @@ button:hover {
     color: #60a5fa;
 }
 
-@keyframes scaleIn {
-    from {transform: scale(0.7);}
-    to {transform: scale(1);}
-}
-
 .close {
     float: right;
     cursor: pointer;
-    font-size: 20px;
 }
 </style>
 </head>
@@ -189,87 +145,83 @@ button:hover {
 
     <div class="mini-circulo" onclick="window.location.href='circulo.html'"></div>
 
-    <p>
-        Ejercicios desarrollados como retos prácticos para dominar gráficos computacionales.
-    </p>
-
     <ul>
         <li><i class="fas fa-circle"></i> Círculo</li>
-        <li><i class="fas fa-shapes"></i> Cuadrado y Triángulo</li>
-        <li><i class="fas fa-chart-bar"></i> Gráfico de Barras</li>
-        <li><i class="fas fa-wave-square"></i> Función Matemática</li>
-        <li><i class="fas fa-chart-line"></i> Línea Dinámica</li>
+        <li><i class="fas fa-shapes"></i> Figuras</li>
+        <li><i class="fas fa-chart-bar"></i> Barras</li>
+        <li><i class="fas fa-wave-square"></i> Función</li>
+        <li><i class="fas fa-chart-line"></i> Línea</li>
     </ul>
 
     <button onclick="abrirModalTrabajos()">Ver</button>
 </div>
 
-<!-- ACTIVIDAD -->
+<!-- ACTIVIDAD 4 -->
 <div class="card">
-    <h3><i class="fas fa-book"></i> Tarea Actividad N° 4</h3>
+    <h3><i class="fas fa-book"></i> Actividad N° 4</h3>
 
     <ul>
-        <li><i class="fas fa-chart-column"></i> Barras Dinámicas</li>
-        <li><i class="fas fa-braille"></i> Puntos en Movimiento</li>
-        <li><i class="fas fa-wave-square"></i> Función Coseno</li>
+        <li><i class="fas fa-chart-column"></i> Barras</li>
+        <li><i class="fas fa-braille"></i> Puntos</li>
+        <li><i class="fas fa-wave-square"></i> Coseno</li>
     </ul>
 
     <button onclick="abrirModal()">Ver</button>
 </div>
 
+<!-- 🔥 NUEVA ACTIVIDAD 5 -->
+<div class="card">
+    <h3><i class="fas fa-cube"></i> Actividad N° 5 (3D)</h3>
+
+    <ul>
+        <li><i class="fas fa-arrows-left-right"></i> Traslación</li>
+        <li><i class="fas fa-rotate"></i> Rotación</li>
+        <li><i class="fas fa-gamepad"></i> Interacción</li>
+    </ul>
+
+    <button onclick="abrirModal5()">Ver</button>
 </div>
 
 </div>
-
-<!-- MODAL TRABAJOS -->
-<div id="modalTrabajos" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="cerrarModalTrabajos()">✖</span>
-        <h3>Trabajos</h3>
-
-        <a href="circulo.html"><i class="fas fa-circle"></i> Círculo</a>
-        <a href="cuadrado_triangulo.html"><i class="fas fa-shapes"></i> Cuadrado y Triángulo</a>
-        <a href="grafico_barras.html"><i class="fas fa-chart-bar"></i> Barras</a>
-        <a href="funcion_matematica.html"><i class="fas fa-wave-square"></i> Función</a>
-        <a href="linea_dinamica.html"><i class="fas fa-chart-line"></i> Línea</a>
-    </div>
 </div>
 
-<!-- MODAL ACTIVIDAD -->
+<!-- MODAL ACTIVIDAD 4 -->
 <div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="cerrarModal()">✖</span>
-        <h3>Tarea Actividad N° 4</h3>
+<div class="modal-content">
+<span class="close" onclick="cerrarModal()">✖</span>
 
-        <a href="grafico_barras_dinamico.html"><i class="fas fa-chart-column"></i> Barras</a>
-        <a href="grafico_puntos_movimiento.html"><i class="fas fa-braille"></i> Puntos</a>
-        <a href="curva_funcion_coseno.html"><i class="fas fa-wave-square"></i> Coseno</a>
-    </div>
+<a href="grafico_barras_dinamico.html">📊 Barras</a>
+<a href="grafico_puntos_movimiento.html">✨ Puntos</a>
+<a href="curva_funcion_coseno.html">📈 Coseno</a>
+
+</div>
+</div>
+
+<!-- MODAL ACTIVIDAD 5 -->
+<div id="modal5" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal5()">✖</span>
+
+<a href="traslacion3d.html">➡️ Traslación</a>
+<a href="rotacion3d.html">🔄 Rotación 3D</a>
+<a href="transformaciones3d.html">🎮 Interacción</a>
+
+</div>
 </div>
 
 <script>
-function abrirModal() {
-    document.getElementById("modal").style.display = "flex";
-}
+function abrirModal(){document.getElementById("modal").style.display="flex";}
+function cerrarModal(){document.getElementById("modal").style.display="none";}
 
-function cerrarModal() {
-    document.getElementById("modal").style.display = "none";
-}
+function abrirModal5(){document.getElementById("modal5").style.display="flex";}
+function cerrarModal5(){document.getElementById("modal5").style.display="none";}
 
-function abrirModalTrabajos() {
-    document.getElementById("modalTrabajos").style.display = "flex";
-}
+window.onclick=function(e){
+let m1=document.getElementById("modal");
+let m2=document.getElementById("modal5");
 
-function cerrarModalTrabajos() {
-    document.getElementById("modalTrabajos").style.display = "none";
-}
-
-window.onclick = function(event) {
-    let modal1 = document.getElementById("modal");
-    let modal2 = document.getElementById("modalTrabajos");
-
-    if (event.target == modal1) modal1.style.display = "none";
-    if (event.target == modal2) modal2.style.display = "none";
+if(e.target==m1)m1.style.display="none";
+if(e.target==m2)m2.style.display="none";
 }
 </script>
 
