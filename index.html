@@ -273,18 +273,38 @@
 
         <h3><i class="fas fa-project-diagram"></i> Actividad N° 6</h3>
 
-        <!-- MENU -->
-        <div style="margin-bottom:15px;">
-            <button onclick="mostrarSeccion('informe')">📄 Informe</button>
-            <button onclick="mostrarSeccion('curvas')">📈 Curvas Paramétricas</button>
-            <button onclick="mostrarSeccion('mallas')">🧊 Mallas Poligonales</button>
+        <!-- MENÚ PRINCIPAL -->
+        <div id="menu6">
+
+            <h4><i class="fas fa-file-alt"></i> Opciones</h4>
+
+            <button onclick="mostrarPDF()">
+                <i class="fas fa-file-pdf"></i> Ver Informe
+            </button>
+
+            <button onclick="window.location.href='curvas_parametricas.html'">
+                <i class="fas fa-bezier-curve"></i> Curvas Paramétricas
+            </button>
+
+            <button onclick="window.location.href='mallas_poligonales.html'">
+                <i class="fas fa-cubes"></i> Mallas Poligonales
+            </button>
+
         </div>
 
-        <!-- CONTENIDO DINÁMICO -->
-        <div id="contenidoModal">
+        <!-- VISOR PDF (OCULTO AL INICIO) -->
+        <div id="visorPDF" style="display:none; margin-top:15px;">
 
-            <!-- MENSAJE INICIAL -->
-            <p style="color:#94a3b8;">Selecciona una opción para visualizar</p>
+            <iframe 
+                src="ACTIVIDAD NRO. 6.pdf"
+                width="100%" 
+                height="500px"
+                style="border-radius:10px;">
+            </iframe>
+
+            <button onclick="volverMenu()" style="margin-top:10px;">
+                ⬅ Volver
+            </button>
 
         </div>
 
