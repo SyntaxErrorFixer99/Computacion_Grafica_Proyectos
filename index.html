@@ -206,9 +206,11 @@
             <button onclick="abrirModal5()">Ver</button>
         </div>
 
-        <!-- ACTIVIDAD 6 -->
+<!-- ACTIVIDAD 6 -->
 <div class="card">
     <h3><i class="fas fa-project-diagram"></i> Tarea Actividad N° 6</h3>
+
+    <p><i class="fas fa-file-alt"></i> Investigación</p>
 
     <ul>
         <li><i class="fas fa-bezier-curve"></i> Curvas Paramétricas</li>
@@ -216,9 +218,6 @@
     </ul>
 
     <button onclick="abrirModal6()">Ver</button>
-</div>
-
-    </div>
 </div>
 
 <!-- MODAL TRABAJOS EN CLASE -->
@@ -272,6 +271,21 @@
         <span class="close" onclick="cerrarModal6()">✖</span>
         <h3><i class="fas fa-project-diagram"></i> Actividad N° 6</h3>
 
+                <h3><i class="fas fa-file-pdf"></i> Investigación - Actividad N° 6</h3>
+
+        <iframe 
+            src="ACTIVIDAD NRO. 6.pdf"
+            width="100%" 
+            height="500px"
+            style="border-radius:10px;">
+        </iframe>
+
+        <a href="ACTIVIDAD NRO. 6.pdf" download style="display:block; margin-top:10px;">
+            <i class="fas fa-download"></i> Descargar PDF
+        </a>
+
+    </div>
+</div> 
         <a href="curvas_parametricas.html">
             <i class="fas fa-bezier-curve"></i> Curvas Paramétricas
         </a>
@@ -323,17 +337,26 @@ function cerrarModal5() {
     function cerrarModal6() {
         document.getElementById("modal6").style.display = "none";
     }
+    function abrirModalInvestigacion() {
+    document.getElementById("modalInvestigacion").style.display = "flex";
+    }
+    
+    function cerrarModalInvestigacion() {
+        document.getElementById("modalInvestigacion").style.display = "none";
+    }
 
     window.onclick = function(event) {
         let m1 = document.getElementById("modal");
         let m2 = document.getElementById("modalTrabajos");
         let m3 = document.getElementById("modal5");
         let m4 = document.getElementById("modal6");
+        let m5 = document.getElementById("modalInvestigacion"); 
 
         if (event.target == m1) m1.style.display = "none";
         if (event.target == m2) m2.style.display = "none";
         if (event.target == m3) m3.style.display = "none";
         if (event.target == m4) m4.style.display = "none";
+        if (event.target == m5) m5.style.display = "none"; 
     }
 </script>
 
