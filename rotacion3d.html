@@ -3,126 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rotación 3D - Cubo de Colores</title>
+<title>Rotación 3D</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+<rect x='8' y='12' width='48' height='30' rx='4' fill='%2338bdf8'/>
+<rect x='14' y='18' width='36' height='18' fill='%230b1120'/>
+<rect x='4' y='44' width='56' height='6' rx='2' fill='%2338bdf8'/>
+</svg>">
 
 <style>
-body {
-    margin: 0;
-    overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle, #020617, #000);
-    color: white;
+body { margin:0; overflow:hidden; background:#000; color:white; font-family:Segoe UI; }
+
+/* INSTRUCTIVO */
+.info {
+    position:absolute;
+    top:10px;
+    left:50%;
+    transform:translateX(-50%);
+    background:white;
+    color:black;
+    padding:10px 20px;
+    border-radius:10px;
+    font-size:14px;
+    z-index:10;
 }
 
-/* BOTÓN VOLVER */
-.boton-volver {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 10px 15px;
-    border-radius: 20px;
-    border: 1px solid white;
-    cursor: pointer;
-    background: transparent;
-    color: white;
-    transition: 0.3s;
-    z-index: 10;
-}
-
-.boton-volver:hover {
-    background: #2563eb;
-}
-
-/* NOMBRE */
-.nombre {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #94a3b8;
-    font-size: 14px;
-    z-index: 10;
-}
-
-/* TÍTULO */
-.titulo {
-    position: absolute;
-    top: 60px;
-    width: 100%;
-    text-align: center;
-    font-size: 22px;
-    color: #38bdf8;
-    z-index: 10;
-}
+.boton-volver { position:absolute; top:20px; left:20px; }
+.nombre { position:absolute; top:20px; right:20px; color:#94a3b8; }
 </style>
 </head>
 
 <body>
 
+<div class="info">
+<b>INSTRUCCIONES:</b> Presiona X, Y o Z para rotar el cubo
+</div>
+
 <button class="boton-volver" onclick="history.back()">⬅ Volver</button>
 <div class="nombre">José Demetrio Chávez Vargas</div>
-<div class="titulo">Rotación 3D del Cubo</div>
 
-<!-- THREE JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
-// ESCENA
 const scene = new THREE.Scene();
-
-// CÁMARA
-const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
+const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-// RENDER
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// LUZ (MEJORA VISUAL)
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(2, 2, 5);
-scene.add(light);
-
-// GEOMETRÍA
-const geometry = new THREE.BoxGeometry(2, 2, 2);
-
-// MATERIALES (COLORES)
+const geometry = new THREE.BoxGeometry();
 const materials = [
-    new THREE.MeshStandardMaterial({ color: 0xff0000 }),
-    new THREE.MeshStandardMaterial({ color: 0xff7f00 }),
-    new THREE.MeshStandardMaterial({ color: 0xffff00 }),
-    new THREE.MeshStandardMaterial({ color: 0x00ff00 }),
-    new THREE.MeshStandardMaterial({ color: 0x0000ff }),
-    new THREE.MeshStandardMaterial({ color: 0x8b00ff })
+ new THREE.MeshBasicMaterial({color:0xff0000}),
+ new THREE.MeshBasicMaterial({color:0xff7f00}),
+ new THREE.MeshBasicMaterial({color:0xffff00}),
+ new THREE.MeshBasicMaterial({color:0x00ff00}),
+ new THREE.MeshBasicMaterial({color:0x0000ff}),
+ new THREE.MeshBasicMaterial({color:0x8b00ff})
 ];
 
-// CUBO
 const cube = new THREE.Mesh(geometry, materials);
 scene.add(cube);
 
-// ANIMACIÓN
-function animate() {
-    requestAnimationFrame(animate);
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
-    renderer.render(scene, camera);
-}
-
-animate();
-
-// RESPONSIVE
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+document.addEventListener("keydown",(e)=>{
+ if(e.key==="x") cube.rotation.x += 0.1;
+ if(e.key==="y") cube.rotation.y += 0.1;
+ if(e.key==="z") cube.rotation.z += 0.1;
 });
+
+function animate(){
+ requestAnimationFrame(animate);
+ renderer.render(scene,camera);
+}
+animate();
 </script>
 
 </body>
