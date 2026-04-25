@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Escalado 3D - Cubo</title>
+<title>Escalado 3D - Cubo de Colores</title>
 
 <style>
 body {
@@ -14,6 +14,7 @@ body {
     color: white;
 }
 
+/* BOTÓN VOLVER */
 .boton-volver {
     position: absolute;
     top: 20px;
@@ -24,6 +25,7 @@ body {
     cursor: pointer;
     background: transparent;
     color: white;
+    transition: 0.3s;
     z-index: 10;
 }
 
@@ -31,6 +33,7 @@ body {
     background: #2563eb;
 }
 
+/* NOMBRE */
 .nombre {
     position: absolute;
     top: 20px;
@@ -47,20 +50,31 @@ body {
 <button class="boton-volver" onclick="history.back()">⬅ Volver</button>
 <div class="nombre">José Demetrio Chávez Vargas</div>
 
+<!-- THREE JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+// ESCENA
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+// CÁMARA
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
 camera.position.z = 5;
 
+// RENDER
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry(2,2,2);
+// GEOMETRÍA
+const geometry = new THREE.BoxGeometry(2, 2, 2);
 
+// COLORES ARCOÍRIS 🌈
 const materials = [
     new THREE.MeshBasicMaterial({ color: 0xff0000 }),
     new THREE.MeshBasicMaterial({ color: 0xff7f00 }),
@@ -70,10 +84,11 @@ const materials = [
     new THREE.MeshBasicMaterial({ color: 0x8b00ff })
 ];
 
+// CUBO
 const cube = new THREE.Mesh(geometry, materials);
 scene.add(cube);
 
-// ESCALADO
+// ESCALADO (zoom animado)
 let scaleDirection = 0.01;
 
 function animate(){
@@ -83,6 +98,7 @@ function animate(){
     cube.scale.y += scaleDirection;
     cube.scale.z += scaleDirection;
 
+    // límites de tamaño
     if(cube.scale.x > 2 || cube.scale.x < 0.5){
         scaleDirection *= -1;
     }
@@ -92,6 +108,7 @@ function animate(){
 
 animate();
 
+// RESPONSIVE 📱
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
