@@ -316,15 +316,24 @@ function cerrarModal5() {
     function cerrarModalTrabajos() {
         document.getElementById("modalTrabajos").style.display = "none";
     }
+        function abrirModal6() {
+        document.getElementById("modal6").style.display = "flex";
+    }
+    
+    function cerrarModal6() {
+        document.getElementById("modal6").style.display = "none";
+    }
 
     window.onclick = function(event) {
         let m1 = document.getElementById("modal");
         let m2 = document.getElementById("modalTrabajos");
         let m3 = document.getElementById("modal5");
+        let m4 = document.getElementById("modal6");
 
         if (event.target == m1) m1.style.display = "none";
         if (event.target == m2) m2.style.display = "none";
         if (event.target == m3) m3.style.display = "none";
+        if (event.target == m4) m4.style.display = "none";
     }
 </script>
 
