@@ -239,11 +239,31 @@
 <div id="modal5" class="modal">
     <div class="modal-content">
         <span class="close" onclick="cerrarModal5()">✖</span>
-        <h3>Tarea Actividad N° 5</h3>
+        <h3>Ejercicios 3D</h3>
 
-        <a href="rotacion3d.html"><i class="fas fa-cube"></i> Rotación 3D</a>
+        <a href="rotacion3d.html">
+            <i class="fas fa-sync-alt"></i> Rotación 3D
+        </a>
+
+        <a href="traslacion3d.html">
+            <i class="fas fa-arrows-alt-h"></i> Traslación 3D
+        </a>
+
+        <a href="escalado3d.html">
+            <i class="fas fa-expand"></i> Escalado 3D
+        </a>
     </div>
 </div>
+
+<script>
+function abrirModal5() {
+    document.getElementById("modal5").style.display = "flex";
+}
+
+function cerrarModal5() {
+    document.getElementById("modal5").style.display = "none";
+}
+</script>
 
 <script>
     function abrirModal() {
